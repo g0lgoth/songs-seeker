@@ -3,14 +3,13 @@ import svn.remote
 import xlsxwriter
 import time
 
-# global variable
-GENERAL_PATH = "E:/UltraStar Deluxe/songs"
+
 # on obtient le chemin d'où le code est lancé
 # il faut lancer le programme du fichier songs dans Ultrastar
 # GENERAL_PATH = os.path.abspath(os.getcwd())
 
 # création de l'excel avec la mise en forme spécifique
-def excel_creation():
+def excelCreation():
     # je me place dans le dossier ou je veux lister les éléments
     excel_directory_move = os.chdir(GENERAL_PATH)
     # je vérifie que le fichier que je veux créer n'existe pas
@@ -76,4 +75,17 @@ def excel_creation():
     wb.close()
     return wb, worksheet, wrap_format, karaoke_folder_list
 
-excel_creation()
+def tableCreation(path):
+    location = os.chdir(path)
+    list=os.listdir(location)
+    listNumber=len(list)
+    return list, listNumber
+
+path = "E:/UltraStar Deluxe/songs"
+i = 0
+# excelCreation()
+pathTable, numberTable=tableCreation(path)
+print(pathTable, numberTable)
+for element in pathTable:
+    [pathTable+i], [numberTable+i]=tableCreation(pathTable[i])
+print(pathTable[1])
