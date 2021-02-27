@@ -4,17 +4,23 @@ from PyQt5.QtWidgets import QApplication, QLabel
 
 def listCreation(path):
     os.chdir(path)
-    list1 = os.listdir("./")
-    list1.insert(0, len(list1))
-    print(list1)
+    list_folder = os.listdir("./")
+    list_folder.insert(0, len(list_folder))
+    print(list_folder)
+    list_folder=listCleaner(list_folder)
     return list1
 
-def listCleaner(list):
-    for i in list[0]:
-        
-
-def listIterator(path, list):
-
+def listCleaner(list_to_clean):
+    i=1
+    for i in range list_to_clean[0]:
+        if list_to_clean[i](-4) == ".":
+            list_to_clean.remove(list_to_clean[i])
+        else:
+            continue
+    print(list_to_clean)
+    return list_to_clean
+            
+# def listIterator(path, list):
 
 def tableCreation(path):
     location = os.chdir(path)
